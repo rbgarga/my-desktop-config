@@ -1,0 +1,107 @@
+#!/bin/sh
+
+if [ -z "$HOME" ]; then
+	echo "\$HOME is not set"
+	exit 1
+fi
+
+if [ ! -d "$HOME" ]; then
+	echo "\$HOME directory doesn't exist"
+	exit 1
+fi
+
+required_binaries="git vim cmake"
+
+for binary in $required_binaries; do
+	if ! which $binary >/dev/null 2>&1; then
+		echo "${binary} not found"
+		exit 1
+	fi
+done
+
+mydir=$(realpath $(dirname $0 ))
+os=$(uname -s)
+
+conf_files="gitconfig synergy.conf vimrc"
+
+if [ -d "${HOME}/bin" ]; then
+	echo "${HOME}/bin is a directory, skipping... "
+else
+	ln -sf $mydir/bin $HOME/
+fi
+
+if [ "$os" = "FreeBSD" ]; then
+	mkdir -p $HOME/.config/awesome $HOME/.config/i3 $HOME/.config/i3status \
+	    $HOME/.config/clipit
+	ln -sf $mydir/wallpaper.jpg $HOME/.wallpaper.jpg
+	ln -sf $mydir/awesome-rc.lua $HOME/.config/awesome/rc.lua
+	ln -sf $mydir/i3-config $HOME/.config/i3/config
+	ln -sf $mydir/i3status-config $HOME/.config/i3status/config
+	ln -sf $mydir/clipitrc $HOME/.config/clipit/clipitrc
+
+	# .login_conf is better being a hardlink
+	ln -f $mydir/login_conf $HOME/.login_conf
+
+	conf_files="${conf_files} Xmodmap Xresources xinitrc xscreensaver"
+fi
+
+for conf_file in $conf_files; do
+	ln -sf $mydir/$conf_file $HOME/.$conf_file
+done
+
+if [ -d "${HOME}/.zprezto" ]; then
+	echo "${HOME}/.zprezto is a directory, skipping... "
+else
+	if ! git clone --recursive git@github.com:rbgarga/prezto.git \
+	    ${HOME}/.zprezto; then
+		echo "Error cloning prezto"
+		exit 1
+	fi
+
+	git -C $HOME/.zprezto remote add upstream \
+	    git@github.com:sorin-ionescu/prezto.git
+
+	for f in zlogin zlogout zpreztorc zprofile zshenv zshrc; do
+		ln -sf $HOME/.zprezto/runcoms/$f $HOME/.$f
+	done
+fi
+
+vundle_dir=$HOME/.vim/bundle/Vundle.vim
+ycm_dir=$HOME/.vim/bundle/YouCompleteMe
+
+if [ -d $vundle_dir ]; then
+	echo "${vundle_dir} is a directory, skipping... "
+else
+	mkdir -p $vundle_dir
+	if ! git clone https://github.com/VundleVim/Vundle.vim.git $vundle_dir
+	then
+		echo "Error cloning Vundle.vim"
+		exit 1
+	fi
+
+	vim '+PluginInstall' '+qall'
+
+	if [ ! -d $ycm_dir ]; then
+		echo "Error: YCM directory not found"
+		exit 1
+	fi
+
+	extra_params=""
+	llvm=""
+	if [ "$os" = "FreeBSD" ]; then
+		llvm_port=$(pkg info | grep '^llvm[0-9]' | head -n 1 | cut -f1)
+		if [ -n "$llvm_port" ]; then
+			llvm=$(pkg query %n $llvm_port)
+		fi
+
+		if [ -n "$llvm" -a -d /usr/local/${llvm}/lib ]; then
+			export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/${llvm}/lib/
+		fi
+
+		if pkg info -e boost-python-libs && pkg info -e boost-all; then
+			extra_params="--clang-completer --system-libclang --system-boost"
+		fi
+	fi
+
+	(cd $ycm_dir && ./install.py ${extra_params})
+fi

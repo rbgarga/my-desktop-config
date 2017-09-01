@@ -1,0 +1,19 @@
+[user]
+	name = Renato Botelho
+	email = garga@FreeBSD.org
+[core]
+	pager = less -F -X
+	ignorecase = false
+[push]
+	default = simple
+[alias]
+	co = checkout
+	ctags = !.git/hooks/ctags
+	chp = cherry-pick
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[merge]
+	tool = gvimdiff
+	conflictstyle = diff3
