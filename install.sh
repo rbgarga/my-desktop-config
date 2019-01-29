@@ -42,7 +42,7 @@ if [ "$os" = "FreeBSD" ]; then
 	# .login_conf is better being a hardlink
 	ln -f $mydir/login_conf $HOME/.login_conf
 
-	conf_files="${conf_files} Xmodmap Xresources xinitrc xscreensaver"
+	conf_files="${conf_files} XCompose Xmodmap Xresources xinitrc xscreensaver"
 fi
 
 for conf_file in $conf_files; do
