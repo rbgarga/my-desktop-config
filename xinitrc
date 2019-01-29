@@ -1,10 +1,18 @@
-xautolock -locker "i3lock -c 000000" &
-xdg-user-dirs-update &
+set -x
 xrdb -merge .Xresources
-clipit &
-#synergys &
-setxkbmap -option "caps:swapescape" &
-feh --bg-scale ~/.wallpaper.jpg &
-xmodmap ~/.Xmodmap &
-#synergyc -n x230 172.21.4.119 &
-exec ck-launch-session $1
+
+[ -n "$1" ] && wm="$1" || wm=i3
+
+if echo "$wm" | grep -iq xfce; then
+	exec ck-launch-session $wm
+else
+	#xautolock -locker "i3lock -c 000000" &
+	xautolock -locker "xlock -allowroot -usefirst -mode blank" &
+	xdg-user-dirs-update &
+	clipit &
+	#synergys &
+	setxkbmap -layout us,us -variant ,intl -option grp:alt_caps_toggle -option caps:swapescape &
+	feh --bg-scale ~/.wallpaper.jpg &
+	xmodmap ~/.Xmodmap &
+	exec ck-launch-session $wm
+fi
