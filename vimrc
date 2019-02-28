@@ -112,13 +112,6 @@ map <F8> :set invnumber<CR>
 " map <F10> :CtrlP<CR>
 
 " Configure taglist
-if g:os == "Darwin"
-    let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-elseif g:os == "FreeBSD"
-    let Tlist_Ctags_Cmd = "/usr/local/bin/exctags"
-elseif g:os == "Linux"
-    let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-endif
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_WinWidth = 60
