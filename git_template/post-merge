@@ -1,0 +1,3 @@
+#!/bin/sh
+
+~/bin/hook_ctags.sh >/dev/null 2>&1 &

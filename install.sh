@@ -22,7 +22,7 @@ done
 mydir=$(realpath $(dirname $0 ))
 os=$(uname -s)
 
-conf_files="gitconfig synergy.conf vimrc"
+conf_files="gitconfig git_template synergy.conf vimrc"
 
 if [ -d "${HOME}/bin" ]; then
 	echo "${HOME}/bin is a directory, skipping... "
