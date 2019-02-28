@@ -6,6 +6,11 @@ else
 	ctags=ctags
 fi
 
+# Only pfSense/FreeBSD-src repos
+if [ ! -f ./build.sh -a ! -f ./ObsoleteFiles.inc ]; then
+	exit 0
+fi
+
 set -e
 PATH="/opt/local/bin:$PATH"
 git_dir=$(git rev-parse --git-dir)
