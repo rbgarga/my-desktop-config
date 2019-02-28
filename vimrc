@@ -97,7 +97,7 @@ colorscheme solarized
 map <F8> :set invnumber<CR>
 
 " Show/hide nerd tree
-map <F9> :NERDTreeToggle<CR>
+" map <F9> :NERDTreeToggle<CR>
 
 " Run CtrlP
 " map <F10> :CtrlP<CR>
