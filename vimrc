@@ -116,6 +116,8 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_WinWidth = 60
 let Tlist_Close_On_Select = 1
+let Tlist_Sort_Type = 'name'
+let Tlist_Display_Prototype = 1
 
 " Configure syntastic
 set statusline+=%#warningmsg#
