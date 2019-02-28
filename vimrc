@@ -18,6 +18,7 @@ Plugin 'xolox/vim-session'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'vim-scripts/taglist.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,6 +75,14 @@ set modeline		" Allow to define options inside file
 set colorcolumn=80	" Show vertical line at column 80
 set mouse=v		" Enable mouse only in visual mode
 
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 " Set extra options when running in GUI mode
 if has("gui_running")
     "set guioptions-=m
@@ -88,10 +97,10 @@ let g:solarized_termtrans = 1
 colorscheme solarized
 
 " Show/hide taglist
-" map <F6> :TagbarToggle<CR>
+map <F6> :TlistToggle<CR>
 
 " Update taglist
-" map <F7> :TlistUpdate<CR>
+map <F7> :TlistUpdate<CR>
 
 " Show/Hide line numbers
 map <F8> :set invnumber<CR>
@@ -103,11 +112,17 @@ map <F8> :set invnumber<CR>
 " map <F10> :CtrlP<CR>
 
 " Configure taglist
-"let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_GainFocus_On_ToggleOpen = 1
-"let Tlist_WinWidth = 60
-"let Tlist_Close_On_Select = 1
+if g:os == "Darwin"
+    let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+elseif g:os == "FreeBSD"
+    let Tlist_Ctags_Cmd = "/usr/local/bin/exctags"
+elseif g:os == "Linux"
+    let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+endif
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_WinWidth = 60
+let Tlist_Close_On_Select = 1
 
 " Configure syntastic
 set statusline+=%#warningmsg#
