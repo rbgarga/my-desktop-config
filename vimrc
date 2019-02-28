@@ -150,6 +150,9 @@ function! Load_FreeBSD_Style()
 	if filereadable(expand("~/work/freebsd/head/tools/tools/editing/freebsd.vim"))
 		source ~/work/freebsd/head/tools/tools/editing/freebsd.vim
 		call FreeBSD_Style()
+	elseif filereadable(expand("~/.vim/freebsd.vim"))
+		source ~/.vim/freebsd.vim
+		call FreeBSD_Style()
 	endif
 endfun
 

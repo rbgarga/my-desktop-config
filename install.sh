@@ -105,3 +105,5 @@ else
 
 	(cd $ycm_dir && ./install.py ${extra_params})
 fi
+
+ln -sf $mydir/freebsd.vim $HOME/.vim/freebsd.vim
