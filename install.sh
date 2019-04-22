@@ -89,16 +89,7 @@ else
 	extra_params=""
 	llvm=""
 	if [ "$os" = "FreeBSD" ]; then
-		llvm_port=$(pkg info | grep '^llvm[0-9]' | head -n 1 | cut -f1)
-		if [ -n "$llvm_port" ]; then
-			llvm=$(pkg query %n $llvm_port)
-		fi
-
-		if [ -n "$llvm" -a -d /usr/local/${llvm}/lib ]; then
-			export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/${llvm}/lib/
-		fi
-
-		if pkg info -e boost-python-libs && pkg info -e boost-all; then
+		if pkg info -e boost-libs; then
 			extra_params="--clang-completer --system-libclang --system-boost"
 		fi
 	fi
