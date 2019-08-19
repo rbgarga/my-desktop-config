@@ -193,7 +193,7 @@ set $weechat_cmd "~/bin/launcher.sh weechat ~/bin/weechat.sh '' terminal"
 set $thunderbird_cmd "~/bin/launcher.sh Thunderbird /usr/local/bin/thunderbird '4: Mail'"
 set $firefox_cmd "~/bin/launcher.sh Firefox /usr/local/bin/firefox '5: WWW'"
 set $slack_cmd "~/bin/launcher.sh Slack '/usr/local/bin/midori --name Slack --class Slack -a https://netgate.slack.com' '3: Slack'"
-set $telegram_cmd "~/bin/launcher.sh TelegramDesktop /usr/local/bin/telegram-desktop '2: Telegram'"
+set $telegram_cmd "~/bin/launcher.sh telegram-desktop /usr/local/bin/telegram-desktop '2: Telegram'"
 
 #bindsym $mod+Mod1+l exec --no-startup-id "i3lock -c 000000"
 bindsym $mod+Mod1+l exec --no-startup-id "xautolock -locknow"
