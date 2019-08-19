@@ -6,6 +6,7 @@ xrdb -merge .Xresources
 if echo "$wm" | grep -iq xfce; then
 	exec ck-launch-session $wm
 else
+	sh ~/bin/display-setup.sh
 	#xautolock -locker "i3lock -c 000000" &
 	xautolock -locker "xlock -allowroot -usefirst -mode blank" &
 	xdg-user-dirs-update &
