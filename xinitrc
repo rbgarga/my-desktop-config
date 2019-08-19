@@ -11,8 +11,8 @@ else
 	xdg-user-dirs-update &
 	clipit &
 	#synergys &
-	feh --bg-scale ~/.wallpaper.jpg &
 	setxkbmap -layout us,us -variant ,intl -option grp:alt_space_toggle -option caps:swapescape &
+	feh --bg-fill ~/.wallpaper.jpg &
 	xmodmap ~/.Xmodmap &
 	exec ck-launch-session $wm
 fi
