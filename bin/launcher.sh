@@ -26,7 +26,7 @@ done
 [ -z "$classname" ] && exit 0
 [ -z "$run" ] && exit 0
 
-if i3-msg "[${param}=\"${classname}\"] focus" 2>/dev/null | grep -q ERROR; then
+if i3-msg "[${param}=\"${classname}\"] focus" 2>&1 | grep -q ERROR; then
 	if [ -n "$terminal" ]; then
 		urxvt -im $classname -name $classname -title $classname \
 		    -n $classname -e $run &
