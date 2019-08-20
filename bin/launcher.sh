@@ -33,4 +33,6 @@ if i3-msg "[${param}=\"${classname}\"] focus" 2>&1 | grep -q ERROR; then
 	else
 		$run &
 	fi
+	sleep 1
+	i3-msg "[${param}=\"${classname}\"] focus" >/dev/null 2>&1
 fi
