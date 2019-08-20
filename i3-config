@@ -112,14 +112,14 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Use meaningfull workspace names
-set $ws1 "1: IRC"
-set $ws2 "2: Telegram"
-set $ws3 "3: Slack"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4: Mail"
 set $ws5 "5: WWW"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
+set $ws6 "6: IRC"
+set $ws7 "7: Telegram"
+set $ws8 "8: Slack"
 set $ws9 "9"
 set $ws10 "10"
 
@@ -146,6 +146,18 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Preferred output for each workspace
+workspace $ws1 output HDMI-1 LVDS-1
+workspace $ws2 output HDMI-1 LVDS-1
+workspace $ws3 output HDMI-1 LVDS-1
+workspace $ws4 output HDMI-1 LVDS-1
+workspace $ws5 output HDMI-1 LVDS-1
+workspace $ws6 output LVDS-1
+workspace $ws7 output LVDS-1
+workspace $ws8 output LVDS-1
+workspace $ws9 output LVDS-1
+workspace $ws10 output LVDS-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -179,33 +191,34 @@ mode "resize" {
 }
 
 # Assign programs to specific workspace
-assign [class="weechat"] $ws1
-assign [class="TelegramDesktop"] $ws2
-assign [class="Slack"] $ws3
 assign [class="Thunderbird"] $ws4
 assign [class="Firefox"] $ws5
+assign [class="weechat"] $ws6
+assign [class="TelegramDesktop"] $ws7
+assign [class="Slack"] $ws8
 
 bindsym $mod+r mode "resize"
 
 bindsym $mod+u [urgent=latest] focus
 
-set $weechat_cmd "~/bin/launcher.sh weechat ~/bin/weechat.sh '' terminal"
-set $thunderbird_cmd "~/bin/launcher.sh Thunderbird /usr/local/bin/thunderbird '4: Mail'"
-set $firefox_cmd "~/bin/launcher.sh Firefox /usr/local/bin/firefox '5: WWW'"
-set $slack_cmd "~/bin/launcher.sh Slack '/usr/local/bin/midori --name Slack --class Slack -a https://netgate.slack.com' '3: Slack'"
-set $telegram_cmd "~/bin/launcher.sh telegram-desktop /usr/local/bin/telegram-desktop '2: Telegram'"
+set $thunderbird_cmd "~/bin/launcher.sh -c Thunderbird -C /usr/local/bin/thunderbird"
+set $firefox_cmd "~/bin/launcher.sh -c Firefox -C /usr/local/bin/firefox"
+set $weechat_cmd "~/bin/launcher.sh -t weechat -C ~/bin/weechat.sh -T"
+set $telegram_cmd "~/bin/launcher.sh -c TelegramDesktop -C /usr/local/bin/telegram-desktop"
+set $slack_cmd "~/bin/launcher.sh -c Slack -C '/usr/local/bin/midori --name Slack --class Slack -a https://netgate.slack.com'"
 
 #bindsym $mod+Mod1+l exec --no-startup-id "i3lock -c 000000"
 bindsym $mod+Mod1+l exec --no-startup-id "xautolock -locknow"
 bindsym XF86AudioMute exec --no-startup-id "~/bin/vol.sh toggle"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "~/bin/vol.sh up"
 bindsym XF86AudioLowerVolume exec --no-startup-id "~/bin/vol.sh down"
+bindsym $mod+Shift+d exec --no-startup-id "~/bin/display-setup.sh"
 
-bindsym $mod+Shift+i exec --no-startup-id $weechat_cmd
-bindsym $mod+Shift+m exec --no-startup-id $thunderbird_cmd
-bindsym $mod+Shift+b exec --no-startup-id $firefox_cmd
-bindsym $mod+Shift+n exec --no-startup-id $slack_cmd
-bindsym $mod+Shift+t exec --no-startup-id $telegram_cmd
+bindsym $mod+i exec --no-startup-id $weechat_cmd
+bindsym $mod+m exec --no-startup-id $thunderbird_cmd
+bindsym $mod+b exec --no-startup-id $firefox_cmd
+bindsym $mod+n exec --no-startup-id $slack_cmd
+bindsym $mod+t exec --no-startup-id $telegram_cmd
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
