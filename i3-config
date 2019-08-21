@@ -193,7 +193,7 @@ mode "resize" {
 # Assign programs to specific workspace
 assign [class="Thunderbird"] $ws4
 assign [class="Firefox"] $ws5
-assign [class="weechat"] $ws6
+assign [title="weechat"] $ws6
 assign [class="TelegramDesktop"] $ws7
 assign [class="Slack"] $ws8
 
