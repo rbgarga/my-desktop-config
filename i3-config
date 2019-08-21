@@ -117,9 +117,9 @@ set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4: Mail"
 set $ws5 "5: WWW"
-set $ws6 "6: IRC"
-set $ws7 "7: Telegram"
-set $ws8 "8: Chat"
+set $ws6 "6: Chat"
+set $ws7 "7"
+set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
@@ -194,10 +194,12 @@ mode "resize" {
 assign [class="Thunderbird"] $ws4
 assign [class="Firefox"] $ws5
 assign [title="weechat"] $ws6
-assign [class="TelegramDesktop"] $ws7
-assign [class="Chat"] $ws8
+assign [class="TelegramDesktop"] $ws6
+assign [class="Chat"] $ws6
 
 for_window [class="Chat"] layout tabbed
+for_window [class="TelegramDesktop"] layout tabbed
+for_window [title="weechat"] layout tabbed
 
 bindsym $mod+r mode "resize"
 
