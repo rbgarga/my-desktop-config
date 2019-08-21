@@ -1,4 +1,8 @@
 set -x
+
+export LANG="en_US.UTF-8"
+export LC_COLLATE="C"
+
 xrdb -merge .Xresources
 
 [ -n "$1" ] && wm="$1" || wm=i3
