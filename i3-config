@@ -119,7 +119,7 @@ set $ws4 "4: Mail"
 set $ws5 "5: WWW"
 set $ws6 "6: IRC"
 set $ws7 "7: Telegram"
-set $ws8 "8: Slack"
+set $ws8 "8: Chat"
 set $ws9 "9"
 set $ws10 "10"
 
@@ -195,7 +195,9 @@ assign [class="Thunderbird"] $ws4
 assign [class="Firefox"] $ws5
 assign [title="weechat"] $ws6
 assign [class="TelegramDesktop"] $ws7
-assign [class="Slack"] $ws8
+assign [class="Chat"] $ws8
+
+for_window [class="Chat"] layout tabbed
 
 bindsym $mod+r mode "resize"
 
@@ -205,7 +207,8 @@ set $thunderbird_cmd "~/bin/launcher.sh -c Thunderbird -C /usr/local/bin/thunder
 set $firefox_cmd "~/bin/launcher.sh -c Firefox -C /usr/local/bin/firefox"
 set $weechat_cmd "~/bin/launcher.sh -t weechat -C ~/bin/weechat.sh -T"
 set $telegram_cmd "~/bin/launcher.sh -c TelegramDesktop -C /usr/local/bin/telegram-desktop"
-set $slack_cmd "~/bin/launcher.sh -c Slack -C '/usr/local/bin/midori --name Slack --class Slack -a https://netgate.slack.com'"
+set $slack_cmd "~/bin/launcher.sh -x Slack -C '/usr/local/bin/midori --name Slack --class Chat -a https://netgate.slack.com'"
+set $whatsapp_cmd "~/bin/launcher.sh -x Whatsapp -C '/usr/local/bin/midori --name Whatsapp --class Chat -a https://web.whatsapp.com'"
 
 #bindsym $mod+Mod1+l exec --no-startup-id "i3lock -c 000000"
 bindsym $mod+Mod1+l exec --no-startup-id "xautolock -locknow"
@@ -219,6 +222,7 @@ bindsym $mod+m exec --no-startup-id $thunderbird_cmd
 bindsym $mod+b exec --no-startup-id $firefox_cmd
 bindsym $mod+n exec --no-startup-id $slack_cmd
 bindsym $mod+t exec --no-startup-id $telegram_cmd
+bindsym $mod+comma exec --no-startup-id $whatsapp_cmd
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -231,3 +235,4 @@ exec $thunderbird_cmd
 exec $firefox_cmd
 exec $slack_cmd
 exec $telegram_cmd
+exec $whatsapp_cmd
