@@ -105,6 +105,9 @@ map <F7> :TlistUpdate<CR>
 " Show/Hide line numbers
 map <F8> :set invnumber<CR>
 
+" Show/Hide listchars
+map <F9> :set invlist<CR>
+
 " Show/hide nerd tree
 " map <F9> :NERDTreeToggle<CR>
 
@@ -136,6 +139,7 @@ let g:ctrlp_working_path_mode = 'ra'
 au BufNewFile,BufRead *.inc set filetype=php
 au BufNewFile,BufRead *.php,*.inc,*.c call Load_FreeBSD_Style()
 au BufNewFile,BufRead dpinger.c set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufRead *.cli,*.yang set tabstop=8 softtabstop=4 shiftwidth=4
 
 " List trailing chars
 set list
