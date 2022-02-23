@@ -8,17 +8,18 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'vim-scripts/taglist.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -135,10 +136,13 @@ let g:syntastic_check_on_wq = 0
 " Make CtrlP start searching on project's root dir
 let g:ctrlp_working_path_mode = 'ra'
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 " Add specific params for specific filetypes
 au BufNewFile,BufRead *.inc set filetype=php
 au BufNewFile,BufRead *.php,*.inc,*.c call Load_FreeBSD_Style()
 au BufNewFile,BufRead dpinger.c set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufRead *.hcl set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.cli,*.yang set tabstop=8 softtabstop=4 shiftwidth=4
 
 " List trailing chars
