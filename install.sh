@@ -66,35 +66,4 @@ else
 	done
 fi
 
-vundle_dir=$HOME/.vim/bundle/Vundle.vim
-ycm_dir=$HOME/.vim/bundle/YouCompleteMe
-
-if [ -d $vundle_dir ]; then
-	echo "${vundle_dir} is a directory, skipping... "
-else
-	mkdir -p $vundle_dir
-	if ! git clone https://github.com/VundleVim/Vundle.vim.git $vundle_dir
-	then
-		echo "Error cloning Vundle.vim"
-		exit 1
-	fi
-
-	vim '+PluginInstall' '+qall'
-
-	if [ ! -d $ycm_dir ]; then
-		echo "Error: YCM directory not found"
-		exit 1
-	fi
-
-	extra_params=""
-	llvm=""
-	if [ "$os" = "FreeBSD" ]; then
-		if pkg info -e boost-libs; then
-			extra_params="--clang-completer --system-libclang --system-boost"
-		fi
-	fi
-
-	(cd $ycm_dir && ./install.py ${extra_params})
-fi
-
-ln -sf $mydir/freebsd.vim $HOME/.vim/freebsd.vim
+${mydir}/vim-install.sh

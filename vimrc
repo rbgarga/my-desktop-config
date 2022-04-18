@@ -1,119 +1,84 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" vim-polyglot tries to be smart with indent and fails miserably
+let g:polyglot_disabled = ['autoindent']
+autocmd BufEnter * set indentexpr=
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Fix for an odd bug that prints some garbage when using it on iTerm2
+set t_RV=
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+set nocompatible
 
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
+call plug#begin()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
+Plug 'cohama/lexima.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dense-analysis/ale'
+Plug 'mhinz/vim-startify'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'preservim/nerdcommenter'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/taglist.vim'
+
+call plug#end()
+
 " Enable syntax
 syntax on
 
 " Enable filetype plugins
-filetype indent plugin on
+filetype plugin on
+
+set autoread		" autom. read file when changed outside of Vim
+set background=dark	" set background
+set cindent		" do C program indenting
+set clipboard=unnamed	" yank to clipboard
+set colorcolumn=80	" Show vertical line at column 80
+set cursorline		" Highlight current line
+set encoding=utf8	" set default encoding to utf8
+set hlsearch		" highlight search pattern matches
+set ignorecase		" ignore case in search patterns
+set incsearch		" do incremental searching
+set lazyredraw		" don't redraw while executing macros
+set magic		" for regex turn magic on
+set modeline		" Allow to define options inside file
+set mps+=<:>		" Make % work with <>
+set noerrorbells	" ring the bell for error messages
+set nostartofline	" commands move cursor to first blank in line
+set novisualbell	" use visual bell instead of beeping
+set number		" show line number
+set ruler		" show the cursor position all the time
+set shortmess=a		" no 'Hit ENTER to continue'
+set showcmd		" display incomplete commands
+set showmatch		" briefly jump to matching bracket if insert one
+set smartcase		" no ignore case when pattern has uppercase
+set smartindent		" do smart indenting
+set t_Co=256		" use 256 colors
+
+if !exists("g:os")
+    let g:os = substitute(system('uname'), '\n', '', '')
+endif
 
 " Always display statusline
 set laststatus=2
-
-" Custom statusline
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]%#StatusLineNC#\ %#ErrorMsg#\ %{fugitive#statusline()}\ %#StatusLine#%=\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
-
-set number		" show line number
-set cindent		" do C program indenting
-set smartindent		" do smart indenting
-set ruler		" show the cursor position all the time
-set incsearch		" do incremental searching
-set ignorecase		" ignore case in search patterns
-set smartcase		" no ignore case when pattern has uppercase
-set showmatch		" briefly jump to matching bracket if insert one
-set showmode		" message on status line to show current mode
-set showcmd		" display incomplete commands
-"set autochdir		" change directory to the file in the current window
-set autoread		" autom. read file when changed outside of Vim
-set noerrorbells	" ring the bell for error messages
-set novisualbell	" use visual bell instead of beeping
-set nostartofline	" commands move cursor to first blank in line
-set shortmess=a		" no 'Hit ENTER to continue'
-set clipboard=unnamed	" yank to clipboard
-set encoding=utf8	" set default encoding to utf8
-set pastetoggle=<F10>	" key code that causes 'paste' to toggle
-set nopaste		" paste is disabled by default
-set mps+=<:>		" Make % work with <>
-set background=dark	" set background
-set t_Co=256		" use 256 colors
-set magic		" for regex turn magic on
-set lazyredraw		" don't redraw while executing macros
-set hlsearch		" highlight search pattern matches
-set modeline		" Allow to define options inside file
-set colorcolumn=80	" Show vertical line at column 80
-set mouse=v		" Enable mouse only in visual mode
-
-if !exists("g:os")
-    if has("win64") || has("win32") || has("win16")
-        let g:os = "Windows"
-    else
-        let g:os = substitute(system('uname'), '\n', '', '')
-    endif
-endif
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts = 1
+let g:airline_statusline_ontop=0
+let g:airline_theme='base16_twilight'
+let g:airline#extensions#tabline#formatter = 'default'
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    "set guioptions-=m
-    "set guioptions-=T
     set guioptions-=e
     set guioptions-=L
-    set guifont=GohuFont\ Regular,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14,Terminus\ 9
+    set guifont=MesloLGMDZ\ Nerd\ Font\ Mono:h16
 endif
 
 " Define colorscheme
-let g:solarized_termtrans = 1
-colorscheme solarized
-
-" Show/hide taglist
-map <F6> :TlistToggle<CR>
-
-" Update taglist
-map <F7> :TlistUpdate<CR>
-
-" Show/Hide line numbers
-map <F8> :set invnumber<CR>
-
-" Show/Hide listchars
-map <F9> :set invlist<CR>
-
-" Show/hide nerd tree
-" map <F9> :NERDTreeToggle<CR>
-
-" Run CtrlP
-" map <F10> :CtrlP<CR>
+colorscheme gruvbox
 
 " Configure taglist
 let Tlist_Exit_OnlyWindow = 1
@@ -123,33 +88,22 @@ let Tlist_Close_On_Select = 1
 let Tlist_Sort_Type = 'name'
 let Tlist_Display_Prototype = 1
 
-" Configure syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Make CtrlP start searching on project's root dir
-let g:ctrlp_working_path_mode = 'ra'
-
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
 " Add specific params for specific filetypes
 au BufNewFile,BufRead *.inc set filetype=php
 au BufNewFile,BufRead *.php,*.inc,*.c call Load_FreeBSD_Style()
+au BufNewFile,BufRead *.c set cinoptions=(0 tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 au BufNewFile,BufRead dpinger.c set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufRead *.hcl set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.cli,*.yang set tabstop=8 softtabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.ex set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " List trailing chars
 set list
 set listchars=tab:▸\ ,trail:·,precedes:…,extends:…,nbsp:‗
+map <c-k>i :set invlist<cr>
 
-" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+" Map a key for Nerdtree toggle
+map <C-n> :NERDTreeToggle<cr>
 
 " Insert current filename on cursor position
 inoremap \fn <C-R>=expand("%:t")<CR>
@@ -157,29 +111,38 @@ inoremap \fn <C-R>=expand("%:t")<CR>
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
+" Make CtrlP start searching on project's root dir
+let g:ctrlp_working_path_mode = 'ra'
+" Other CtrlP config items
+let g:ctrlp_custom_ignore = '\v[\/]\.(swp|zip)$'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_show_hidden = 1
+
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+map cc <Plug>NERDCommenterInvert
+
+let g:ale_linters = {'python': ['flake8', 'pylint'], 'javascript': ['eslint']}
+let g:ale_completion_enabled = 0
+
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
-	au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-	\| exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal! g'\"" | endif
 endif
 
 function! Load_FreeBSD_Style()
-	if filereadable(expand("~/work/freebsd/head/tools/tools/editing/freebsd.vim"))
-		source ~/work/freebsd/head/tools/tools/editing/freebsd.vim
-		call FreeBSD_Style()
-	elseif filereadable(expand("~/.vim/freebsd.vim"))
-		source ~/.vim/freebsd.vim
-		call FreeBSD_Style()
-	endif
+    if filereadable(expand("~/work/freebsd/head/tools/tools/editing/freebsd.vim"))
+        source ~/work/freebsd/head/tools/tools/editing/freebsd.vim
+        call FreeBSD_Style()
+    elseif filereadable(expand("~/.vim/freebsd.vim"))
+        source ~/.vim/freebsd.vim
+        call FreeBSD_Style()
+    endif
 endfun
 
-let g:session_autoload = 'yes'
-let g:session_autosave = 'yes'
-let g:DisableAutoPHPFolding = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+" Preferred indent rules
+set tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 
-set tabstop=8
-set shiftwidth=8
-set softtabstop=8
-set noexpandtab
+source ~/.vim/coc.vimrc
