@@ -32,31 +32,32 @@ syntax on
 " Enable filetype plugins
 filetype plugin on
 
-set autoread		" autom. read file when changed outside of Vim
-set background=dark	" set background
-set cindent		" do C program indenting
-set clipboard=unnamed	" yank to clipboard
-set colorcolumn=80	" Show vertical line at column 80
-set cursorline		" Highlight current line
-set encoding=utf8	" set default encoding to utf8
-set hlsearch		" highlight search pattern matches
-set ignorecase		" ignore case in search patterns
-set incsearch		" do incremental searching
-set lazyredraw		" don't redraw while executing macros
-set magic		" for regex turn magic on
-set modeline		" Allow to define options inside file
-set mps+=<:>		" Make % work with <>
-set noerrorbells	" ring the bell for error messages
-set nostartofline	" commands move cursor to first blank in line
-set novisualbell	" use visual bell instead of beeping
-set number		" show line number
-set ruler		" show the cursor position all the time
-set shortmess=a		" no 'Hit ENTER to continue'
-set showcmd		" display incomplete commands
-set showmatch		" briefly jump to matching bracket if insert one
-set smartcase		" no ignore case when pattern has uppercase
-set smartindent		" do smart indenting
-set t_Co=256		" use 256 colors
+set autoread			" autom. read file when changed outside of Vim
+set background=dark		" set background
+set cindent			" do C program indenting
+set clipboard=autoselect	" yank to clipboard
+set colorcolumn=80		" Show vertical line at column 80
+set cursorline			" Highlight current line
+set encoding=utf8		" set default encoding to utf8
+set hlsearch			" highlight search pattern matches
+set ignorecase			" ignore case in search patterns
+set incsearch			" do incremental searching
+set lazyredraw			" don't redraw while executing macros
+set magic			" for regex turn magic on
+set modeline			" Allow to define options inside file
+set mps+=<:>			" Make % work with <>
+set noerrorbells		" ring the bell for error messages
+set nostartofline		" commands move cursor to first blank in line
+set novisualbell		" use visual bell instead of beeping
+set number			" show line number
+set ruler			" show the cursor position all the time
+set shortmess=a			" no 'Hit ENTER to continue'
+set showcmd			" display incomplete commands
+set showmatch			" briefly jump to matching bracket if insert one
+set smartcase			" no ignore case when pattern has uppercase
+set smartindent			" do smart indenting
+set t_Co=256			" use 256 colors
+set mouse=a			" let the mouse events to be used
 
 if !exists("g:os")
     let g:os = substitute(system('uname'), '\n', '', '')
@@ -72,10 +73,15 @@ let g:airline#extensions#tabline#formatter = 'default'
 
 " Set extra options when running in GUI mode
 if has("gui_running")
+    set guioptions+=a
     set guioptions-=e
     set guioptions-=L
     set guifont=MesloLGMDZ\ Nerd\ Font\ Mono:h16
 endif
+
+" Navigate through tabs
+nnoremap <C-]> :tabn<cr>
+nnoremap <C-[> :tabp<cr>
 
 " Define colorscheme
 colorscheme gruvbox
