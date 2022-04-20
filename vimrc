@@ -80,8 +80,8 @@ if has("gui_running")
 endif
 
 " Navigate through tabs
-nnoremap <C-]> :tabn<cr>
-nnoremap <C-[> :tabp<cr>
+nnoremap <C-l> :tabn<cr>
+nnoremap <C-h> :tabp<cr>
 
 " Define colorscheme
 colorscheme gruvbox
