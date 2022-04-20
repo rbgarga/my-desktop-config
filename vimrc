@@ -34,7 +34,6 @@ filetype plugin on
 
 set autoread			" autom. read file when changed outside of Vim
 set background=dark		" set background
-set cindent			" do C program indenting
 set clipboard=autoselect	" yank to clipboard
 set colorcolumn=80		" Show vertical line at column 80
 set cursorline			" Highlight current line
@@ -98,7 +97,7 @@ let Tlist_Display_Prototype = 1
 " Add specific params for specific filetypes
 au BufNewFile,BufRead *.inc set filetype=php
 au BufNewFile,BufRead *.php,*.inc,*.c call Load_FreeBSD_Style()
-au BufNewFile,BufRead *.c set cinoptions=(0 tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
+au BufNewFile,BufRead *.c,*.h set cindent cinoptions=(0 tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 au BufNewFile,BufRead dpinger.c set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufRead *.hcl set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.cli,*.yang set tabstop=8 softtabstop=4 shiftwidth=4
