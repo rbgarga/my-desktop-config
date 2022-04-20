@@ -48,6 +48,7 @@ set modeline			" Allow to define options inside file
 set mps+=<:>			" Make % work with <>
 set noerrorbells		" ring the bell for error messages
 set nostartofline		" commands move cursor to first blank in line
+set noshowmode			" Do not show current mode on status line
 set novisualbell		" use visual bell instead of beeping
 set number			" show line number
 set ruler			" show the cursor position all the time
