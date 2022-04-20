@@ -57,7 +57,7 @@ set showmatch			" briefly jump to matching bracket if insert one
 set smartcase			" no ignore case when pattern has uppercase
 set smartindent			" do smart indenting
 set t_Co=256			" use 256 colors
-set mouse=a			" let the mouse events to be used
+set mouse=v			" Enable mouse only in visual mode
 
 if !exists("g:os")
     let g:os = substitute(system('uname'), '\n', '', '')
