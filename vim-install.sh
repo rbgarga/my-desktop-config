@@ -22,8 +22,11 @@ else
 	fi
 	ln -sf ${plug_dir}/plug.vim $plug_vim
 	ln -sf ${mydir}/coc.vimrc ${vim_dir}/coc.vimrc
+	mkdir -p ~/.config/nvim ~/.local/share/nvim
+	ln -sf ${mydir}/init.vim ~/.config/nvim/init.vim
+	ln -sf ${vim_dir}/plugged ~/.local/share/nvim/plugged
 
-	vim '+PlugInstall' '+qall'
+	nvim '+PlugInstall' '+qall'
 fi
 
 ln -sf $mydir/freebsd.vim $HOME/.vim/freebsd.vim
