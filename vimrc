@@ -107,6 +107,7 @@ au BufNewFile,BufRead *.ex set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set list
 set listchars=tab:▸\ ,trail:·,precedes:…,extends:…,nbsp:‗
 map <c-k>i :set invlist<cr>
+map <c-k>n :set invnumber<cr>
 
 " Map a key for Nerdtree toggle
 map <C-n> :NERDTreeToggle<cr>
