@@ -1,3 +1,5 @@
+" ex: tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
 " vim-polyglot tries to be smart with indent and fails miserably
 let g:polyglot_disabled = ['autoindent']
 autocmd BufEnter * set indentexpr=
@@ -34,7 +36,9 @@ filetype plugin on
 
 set autoread			" autom. read file when changed outside of Vim
 set background=dark		" set background
-set clipboard=autoselect	" yank to clipboard
+if !has('nvim')
+    set clipboard=autoselect	" yank to clipboard
+endif
 set colorcolumn=80		" Show vertical line at column 80
 set cursorline			" Highlight current line
 set encoding=utf8		" set default encoding to utf8
@@ -79,9 +83,10 @@ if has("gui_running")
     set guifont=MesloLGMDZ\ Nerd\ Font\ Mono:h16
 endif
 
-" Navigate through tabs
-nnoremap <C-l> :tabn<cr>
-nnoremap <C-h> :tabp<cr>
+" Navigate through buffers
+nnoremap <M-Right> :bn<cr>
+nnoremap <M-Left> :bp<cr>
+nnoremap <c-x> :bp\|bd #<cr>
 
 " Define colorscheme
 colorscheme gruvbox
