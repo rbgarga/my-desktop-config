@@ -98,6 +98,7 @@ let Tlist_WinWidth = 60
 let Tlist_Close_On_Select = 1
 let Tlist_Sort_Type = 'name'
 let Tlist_Display_Prototype = 1
+set tags=.git/tags
 
 " Add specific params for specific filetypes
 au BufNewFile,BufRead *.inc set filetype=php
