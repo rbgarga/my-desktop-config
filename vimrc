@@ -32,7 +32,7 @@ call plug#end()
 syntax on
 
 " Enable filetype plugins
-filetype plugin on
+filetype plugin indent on
 
 set autoread			" autom. read file when changed outside of Vim
 set background=dark		" set background
@@ -107,6 +107,7 @@ au BufNewFile,BufRead dpinger.c set tabstop=4 shiftwidth=4 softtabstop=4 expandt
 au BufNewFile,BufRead *.hcl set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.cli,*.yang set tabstop=8 softtabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.ex set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.sh set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab nocindent smartindent
 
 " List trailing chars
 set list
