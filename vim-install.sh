@@ -14,7 +14,7 @@ if [ -e $plug_vim ]; then
 	echo "${plug_vim} is present, skipping... "
 else
 	ln -sf ${mydir}/vimrc ${HOME}/.vimrc
-	mkdir -p $(dirname $plug_vim)
+	mkdir -p $(dirname $plug_vim) ${vim_dir}/plugged
 	rm -rf $plug_dir
 	if ! git clone https://github.com/junegunn/vim-plug.git $plug_dir; then
 		echo "Error clonning plug vim"
@@ -26,7 +26,7 @@ else
 	ln -sf ${mydir}/init.vim ~/.config/nvim/init.vim
 	ln -sf ${vim_dir}/plugged ~/.local/share/nvim/plugged
 
-	vim '+PlugInstall' '+qall'
+	nvim '+PlugInstall' '+qall'
 fi
 
 ln -sf $mydir/freebsd.vim $HOME/.vim/freebsd.vim

@@ -10,7 +10,7 @@ if [ ! -d "$HOME" ]; then
 	exit 1
 fi
 
-required_binaries="git vim nvim ondir tmux"
+required_binaries="git node nvim ondir tmux"
 
 for binary in $required_binaries; do
 	if ! which $binary >/dev/null 2>&1; then
