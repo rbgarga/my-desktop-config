@@ -1,8 +1,8 @@
 " ex: tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " vim-polyglot tries to be smart with indent and fails miserably
-let g:polyglot_disabled = ['autoindent']
-autocmd BufEnter * set indentexpr=
+"let g:polyglot_disabled = ['autoindent']
+"autocmd BufEnter * set indentexpr=
 
 " Fix for an odd bug that prints some garbage when using it on iTerm2
 set t_RV=
