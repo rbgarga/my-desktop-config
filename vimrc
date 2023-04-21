@@ -159,4 +159,7 @@ endfun
 " Preferred indent rules
 set tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 
+" Insert sponsored by netgate
+map ,p iRubicon Communications, LLC ("Netgate")<ESC>
+
 source ~/.vim/coc.vimrc
