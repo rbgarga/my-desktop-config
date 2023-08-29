@@ -54,6 +54,7 @@ portlint
 porttools
 poudriere
 powerdxx
+pwcview
 py39-speedtest-cli
 qemu-user-static
 rclint
@@ -61,6 +62,7 @@ rsync
 rxvt-unicode
 screen
 sddm
+sndio
 subversion
 sudo
 telegram-desktop
@@ -73,10 +75,13 @@ ubuntu-font
 unrar
 urxvt-perls
 vim
+virtual_oss
 vmdktool
 xautolock
 xdotool
 xf86-input-evdev
+xfce
+xfce4-volumed-pulse
 xorg
 xpdf
 zsh
