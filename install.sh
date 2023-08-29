@@ -42,6 +42,9 @@ if [ "$os" = "FreeBSD" ]; then
 	# .login_conf is better being a hardlink
 	ln -f $mydir/login_conf $HOME/.login_conf
 
+	sudo mkdir -p /usr/local/etc/polkit-1/rules.d
+	sudo cp -f 60-garga.rules /usr/local/etc/polkit-1/rules.d
+
 	conf_files="${conf_files} XCompose Xmodmap Xresources xinitrc xscreensaver"
 fi
 
