@@ -5,10 +5,10 @@ export LC_COLLATE="C"
 
 xrdb -merge .Xresources
 
-[ -n "$1" ] && wm="$1" || wm=i3
+[ -n "$1" ] && wm="$1" || wm=xfce
 
 if echo "$wm" | grep -iq xfce; then
-	exec ck-launch-session $wm
+	exec /usr/local/bin/startxfce4 --with-ck-launch
 else
 	sh ~/bin/display-setup.sh
 	#xautolock -locker "i3lock -c 000000" &
