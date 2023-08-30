@@ -6,6 +6,7 @@ artwiz-aleczapka-en
 cantarell-fonts
 ccache
 clipit
+clipman
 cmake
 colordiff
 cups-filters
@@ -78,9 +79,12 @@ vim
 virtual_oss
 vmdktool
 xautolock
+xdg-user-dirs
 xdotool
 xf86-input-evdev
 xfce
+xfce4-clipman-plugin
+xfce4-screensaver
 xfce4-volumed-pulse
 xorg
 xpdf
