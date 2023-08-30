@@ -7,17 +7,17 @@ xrdb -merge .Xresources
 
 [ -n "$1" ] && wm="$1" || wm=xfce
 
+setxkbmap -layout us,us -variant ,intl -option grp:win_space_toggle -option caps:swapescape &
+xmodmap ~/.Xmodmap &
+xdg-user-dirs-update &
+
 if echo "$wm" | grep -iq xfce; then
+	xfce4-clipman &
 	exec /usr/local/bin/startxfce4 --with-ck-launch
 else
 	sh ~/bin/display-setup.sh
-	#xautolock -locker "i3lock -c 000000" &
 	xautolock -locker "xlock -allowroot -usefirst -mode blank" &
-	xdg-user-dirs-update &
 	clipit &
-	#synergys &
-	setxkbmap -layout us,us -variant ,intl -option grp:alt_space_toggle -option caps:swapescape &
 	feh --bg-fill ~/.wallpaper.jpg &
-	xmodmap ~/.Xmodmap &
 	exec ck-launch-session $wm
 fi
