@@ -36,3 +36,7 @@
 	rebase = true
 [rebase]
 	autoStash = true
+	autosquash = true
+[log]
+	abbrevCommit = on
+	date = local
