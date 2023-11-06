@@ -14,6 +14,7 @@ call plug#begin()
 Plug 'cohama/lexima.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
+Plug 'fatih/vim-go'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdcommenter'
@@ -21,6 +22,8 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'shime/vim-livedown'
+Plug 'stsewd/sphinx.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -161,5 +164,7 @@ set tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 
 " Insert sponsored by netgate
 map ,p iRubicon Communications, LLC ("Netgate")<ESC>
+
+nmap gm :LivedownToggle<CR>
 
 source ~/.vim/coc.vimrc
