@@ -10,7 +10,7 @@ if [ ! -d "$HOME" ]; then
 	exit 1
 fi
 
-required_binaries="git node nvim ondir tmux"
+required_binaries="git node nvim tmux"
 
 for binary in $required_binaries; do
 	if ! which $binary >/dev/null 2>&1; then
@@ -22,7 +22,7 @@ done
 mydir=$(realpath $(dirname $0 ))
 os=$(uname -s)
 
-conf_files="gitconfig git_template ondirrc tmux.conf"
+conf_files="gitconfig git_template tmux.conf"
 
 if [ -d "${HOME}/bin" ]; then
 	echo "${HOME}/bin is a directory, skipping... "
