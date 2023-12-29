@@ -1,5 +1,7 @@
 set -x
 
+exec 1> ~/.xinitrc.log 2>&1
+
 export LANG="en_US.UTF-8"
 export LC_COLLATE="C"
 
