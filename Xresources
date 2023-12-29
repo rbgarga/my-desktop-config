@@ -5,7 +5,7 @@ URxvt*keysym.M-c:           perl:clipboard:copy
 URxvt*keysym.M-u:           perl:url-select:select_next
 URxvt*keysym.M-v:           perl:clipboard:paste
 URxvt*keysym:M-s:           perl:keyboard-select:search
-URxvt*perl-ext:             default,keyboard-select,url-select,clipboard,searchable-scrollback
+URxvt*perl-ext:             default,keyboard-select,url-select,clipboard,searchable-scrollback,font-size
 URxvt*perl-lib:             /usr/local/lib/urxvt/perl/clipboard
 URxvt*scrollBar:            false
 URxvt*termName:             xterm-256color
