@@ -232,9 +232,9 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id $weechat_cmd
-exec $thunderbird_cmd
-exec $firefox_cmd
-exec $slack_cmd
-exec $telegram_cmd
-exec $whatsapp_cmd
+#exec --no-startup-id $weechat_cmd
+#exec $thunderbird_cmd
+#exec $firefox_cmd
+#exec $slack_cmd
+#exec $telegram_cmd
+#exec $whatsapp_cmd
