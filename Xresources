@@ -27,8 +27,8 @@ weechat*url-select.underline: true
 weechat*url-select.launcher:  firefox
 
 ! Solarized
-#define S_base03        #002b36
-!#define S_base03        #001b22
+!#define S_base03        #002b36
+#define S_base03        #001b22
 #define S_base02        #073642
 #define S_base01        #586e75
 #define S_base00        #657b83
