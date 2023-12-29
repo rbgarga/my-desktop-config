@@ -20,7 +20,7 @@ weechat*keysym.M-c:           perl:clipboard:copy
 weechat*keysym.M-u:           perl:url-select:select_next
 weechat*keysym.M-v:           perl:clipboard:paste
 weechat*keysym:M-s:           perl:keyboard-select:search
-weechat*perl-ext:             default,keyboard-select,url-select,clipboard,searchable-scrollback
+weechat*perl-ext:             clipboard,default,font-size,keyboard-select,searchable-scrollback,url-select
 weechat*perl-lib:             /usr/local/lib/urxvt/perl/clipboard
 weechat*scrollBar:            false
 weechat*termName:             xterm-256color
