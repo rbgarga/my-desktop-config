@@ -1,3 +1,4 @@
+URxvt*font:                 xft:terminus:size=15
 URxvt*keysym.M-C-v:         perl:clipboard:paste_escaped
 URxvt*keysym.M-Escape:      perl:keyboard-select:activate
 URxvt*keysym.M-c:           perl:clipboard:copy
@@ -12,6 +13,7 @@ URxvt*urgentOnBell:         true
 URxvt*url-select.launcher:  firefox
 URxvt*url-select.underline: true
 
+weechat*font:                 xft:terminus:size=15
 weechat*keysym.M-C-v:         perl:clipboard:paste_escaped
 weechat*keysym.M-Escape:      perl:keyboard-select:activate
 weechat*keysym.M-c:           perl:clipboard:copy
