@@ -7,7 +7,7 @@ export LC_COLLATE="C"
 
 xrdb -merge .Xresources
 
-: ${wm:=i3}
+: ${wm:=wmaker}
 
 setxkbmap -layout us,us -variant ,intl -option grp:win_space_toggle -option caps:swapescape &
 xmodmap ~/.Xmodmap &
@@ -17,6 +17,12 @@ case "$wm" in
 	xfce)
 		xfce4-clipman &
 		exec /usr/local/bin/startxfce4 --with-ck-launch
+		;;
+	wmaker)
+		xautolock -locker "xlock -allowroot -usefirst -mode blank" &
+		wmsystemtray --small &
+		clipit &
+		exec ck-launch-session $wm
 		;;
 	*)
 		sh ~/bin/display-setup.sh
