@@ -148,10 +148,14 @@ let g:ale_fixers.python = ['black']
 let g:black_use_virtualenv = 0
 let g:black_quiet = 1
 
-augroup black_on_save
-  autocmd!
-  autocmd BufWritePre *.py Black
-augroup end
+if !has("gui_running") && (g:os =~? "linux")
+    if system("lsb_release -si") =~? "Chimera"
+        augroup black_on_save
+            autocmd!
+            autocmd BufWritePre *.py Black
+        augroup end
+    endif
+endif
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
