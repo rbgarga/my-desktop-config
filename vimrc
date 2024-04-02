@@ -18,7 +18,6 @@ Plug 'fatih/vim-go'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdcommenter'
-Plug 'psf/black', { 'branch': 'stable' }
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
@@ -144,18 +143,7 @@ let g:ale_linters = {'python': ['flake8', 'pylint'], 'javascript': ['eslint']}
 let g:ale_completion_enabled = 0
 let g:ale_fixers = {}
 let g:ale_fixers.python = ['black']
-
-let g:black_use_virtualenv = 0
-let g:black_quiet = 1
-
-if !has("gui_running") && (g:os =~? "linux")
-    if system("lsb_release -si") =~? "Chimera"
-        augroup black_on_save
-            autocmd!
-            autocmd BufWritePre *.py Black
-        augroup end
-    endif
-endif
+let g:ale_fix_on_save = 1
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
