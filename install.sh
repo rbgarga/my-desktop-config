@@ -31,10 +31,9 @@ else
 fi
 
 if [ "$os" = "FreeBSD" ]; then
-	mkdir -p $HOME/.config/awesome $HOME/.config/i3 $HOME/.config/i3status \
+	mkdir -p $HOME/.config/i3 $HOME/.config/i3status \
 	    $HOME/.config/clipit
 	ln -sf $mydir/wallpaper.jpg $HOME/.wallpaper.jpg
-	ln -sf $mydir/awesome-rc.lua $HOME/.config/awesome/rc.lua
 	ln -sf $mydir/i3-config $HOME/.config/i3/config
 	ln -sf $mydir/i3status-config $HOME/.config/i3status/config
 	ln -sf $mydir/clipitrc $HOME/.config/clipit/clipitrc
