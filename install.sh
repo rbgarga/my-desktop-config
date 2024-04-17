@@ -31,12 +31,10 @@ else
 fi
 
 if [ "$os" = "FreeBSD" ]; then
-	mkdir -p $HOME/.config/i3 $HOME/.config/i3status \
-	    $HOME/.config/clipit
+	mkdir -p $HOME/.config/i3 $HOME/.config/i3status
 	ln -sf $mydir/wallpaper.jpg $HOME/.wallpaper.jpg
 	ln -sf $mydir/i3-config $HOME/.config/i3/config
 	ln -sf $mydir/i3status-config $HOME/.config/i3status/config
-	ln -sf $mydir/clipitrc $HOME/.config/clipit/clipitrc
 
 	# .login_conf is better being a hardlink
 	ln -f $mydir/login_conf $HOME/.login_conf
