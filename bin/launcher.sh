@@ -1,52 +1,21 @@
 #!/bin/sh
 
 focus() {
-	local _rc=0
-
-	if [ "${param}" = "xdotool" ]; then
-		local _idx=""
-		local _id=""
-		for _idx in $(xdotool search --name ${classname} 2>&1); do
-			if xprop -id ${_idx} | grep -q _NET_WM_DESKTOP; then
-				_id=$_idx
-				break
-			fi
-		done
-		if [ -z "${_id}" ]; then
-			return 1
-		fi
-		xdotool windowactivate ${_id} >/dev/null 2>&1
-		_rc=$?
-	else
-		if i3-msg "[${param}=\"${classname}\"] focus" 2>&1 \
-		    | grep -q ERROR; then
-			_rc=1
-		fi
-	fi
-
-	return $_rc
+	swaymsg "[app_id=\"${app_id}\"] focus" 2>&1
+	return $?
 }
 
-unset classname param run terminal
-while getopts c:t:C:Tx: flag; do
+unset app_id run terminal
+while getopts c:C:t flag; do
 	case ${flag} in
 		c)
-			classname=$OPTARG
-			param="class"
-			;;
-		t)
-			classname=$OPTARG
-			param="title"
+			app_id=$OPTARG
 			;;
 		C)
 			run=$OPTARG
 			;;
-		T)
+		t)
 			terminal=1
-			;;
-		x)
-			classname=$OPTARG
-			param="xdotool"
 			;;
 		*)
 			echo "ERROR"
@@ -54,13 +23,12 @@ while getopts c:t:C:Tx: flag; do
 	esac
 done
 
-[ -z "$classname" ] && exit 0
+[ -z "$app_id" ] && exit 0
 [ -z "$run" ] && exit 0
 
 if ! focus; then
 	if [ -n "$terminal" ]; then
-		urxvt -im $classname -name $classname -title $classname \
-		    -n $classname -e $run &
+		alacritty --class $app_id -e $run &
 	else
 		$run &
 	fi

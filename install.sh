@@ -31,10 +31,10 @@ else
 fi
 
 if [ "$os" = "FreeBSD" ]; then
-	mkdir -p $HOME/.config/i3 $HOME/.config/i3status
+	mkdir -p $HOME/.config/i3status $HOME/.config/sway
 	ln -sf $mydir/wallpaper.jpg $HOME/.wallpaper.jpg
-	ln -sf $mydir/i3-config $HOME/.config/i3/config
 	ln -sf $mydir/i3status-config $HOME/.config/i3status/config
+	ln -sf $mydir/sway-config $HOME/.config/sway/config
 
 	# .login_conf is better being a hardlink
 	ln -f $mydir/login_conf $HOME/.login_conf
@@ -42,7 +42,7 @@ if [ "$os" = "FreeBSD" ]; then
 	sudo mkdir -p /usr/local/etc/polkit-1/rules.d
 	sudo cp -f 60-garga.rules /usr/local/etc/polkit-1/rules.d
 
-	conf_files="${conf_files} XCompose Xmodmap Xresources xinitrc xscreensaver"
+	conf_files="${conf_files} XCompose Xmodmap"
 fi
 
 for conf_file in $conf_files; do
