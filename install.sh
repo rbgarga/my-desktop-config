@@ -42,7 +42,7 @@ if [ "$os" = "FreeBSD" ]; then
 	sudo mkdir -p /usr/local/etc/polkit-1/rules.d
 	sudo cp -f 60-garga.rules /usr/local/etc/polkit-1/rules.d
 
-	conf_files="${conf_files} XCompose Xmodmap"
+	conf_files="${conf_files} XCompose"
 fi
 
 for conf_file in $conf_files; do
