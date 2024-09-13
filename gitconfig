@@ -15,7 +15,7 @@
 	smudge = git hawser smudge %f
 	required = true
 [merge]
-	tool = gvimdiff
+	tool = vimdiff
 	conflictstyle = diff3
 [sendemail]
 	smtpEncryption = tls
@@ -40,3 +40,8 @@
 [log]
 	abbrevCommit = on
 	date = local
+[mergetool]
+	keepBackup = false
+	prompt = false
+[mergetool "vimdiff"]
+	cmd = "nvim  -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J | wincmd ='"
